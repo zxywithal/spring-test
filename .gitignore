@@ -1,0 +1,11 @@
+# Project exclude paths
+/thiink-in-spring/bean-lifecycle/target/
+/thiink-in-spring/bean-scope/target/
+/thiink-in-spring/configuration-metadata/target/
+/thiink-in-spring/dependency-injection/target/
+/thiink-in-spring/dependency-lookup/target/
+/thiink-in-spring/dependency-source/target/
+/thiink-in-spring/ioc-container-overview/target/
+/thiink-in-spring/spring-bean/target/
+.idea/
+*.iml
