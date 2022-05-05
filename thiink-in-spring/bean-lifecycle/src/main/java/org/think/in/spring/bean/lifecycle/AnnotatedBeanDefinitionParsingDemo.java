@@ -7,12 +7,17 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.EncodedResource;
 import org.think.in.spring.ioc.overview.domain.User;
 
+/**
+ * 基于注解的BeanDefinition 示例
+ */
 public class AnnotatedBeanDefinitionParsingDemo {
     public static void main(String[] args) {
         DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
         //读取properties文件，加载bean
+        //基于java注解的AnnotatedBeanDefinitionReader实现
         AnnotatedBeanDefinitionReader definitionReader = new AnnotatedBeanDefinitionReader(factory);
         int beanDefinitionCountBefore = factory.getBeanDefinitionCount();
+        //注册当前类（非 @Component class）
         definitionReader.register(AnnotatedBeanDefinitionParsingDemo.class);
         int beanDefinitionCountAfter = factory.getBeanDefinitionCount();
         int beanDefinitionCount = beanDefinitionCountAfter - beanDefinitionCountBefore;
