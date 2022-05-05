@@ -18,7 +18,7 @@ import javax.annotation.PostConstruct;
  */
 public class DependencySourceDemo implements InitializingBean, DisposableBean {
 
-    //注入在postProcessProperties方法执行，遭遇setter注入，也早于@postConstructor
+    //注入在postProcessProperties方法执行，早于setter注入，也早于@postConstructor
     @Autowired
     private BeanFactory beanFactory;
 
