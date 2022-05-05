@@ -5,6 +5,7 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.support.EncodedResource;
 import org.springframework.util.StreamUtils;
+import org.think.in.spring.resource.util.ResourceUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,12 +22,6 @@ public class EncodedFileSystemResourceDemo {
         String currentJavaFilePath = System.getProperty("user.dir")+"/thiink-in-spring/resource/src/main/java/org/think/in/spring/resource/EncodedFileSystemResourceDemo.java";
         File currentJavaFile = new File(currentJavaFilePath);
         FileSystemResource fileSystemResource = new FileSystemResource(currentJavaFile);
-        EncodedResource encodedResource = new EncodedResource(fileSystemResource, "utf-8");
-        //获取字符输入流
-        try(Reader reader = encodedResource.getReader()){
-            //利用apache的io工具类将reader输出
-            System.out.println(IOUtils.toString(reader));
-        }
-
+        System.out.println(ResourceUtils.getContent(fileSystemResource));
     }
 }
