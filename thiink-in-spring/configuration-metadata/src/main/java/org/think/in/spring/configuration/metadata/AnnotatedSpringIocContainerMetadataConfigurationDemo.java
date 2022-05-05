@@ -19,7 +19,7 @@ import java.util.Map;
 public class AnnotatedSpringIocContainerMetadataConfigurationDemo {
 
     /**
-     *
+     *user.name 是Java Properties默认存在，当前用户zxy，而非配置中定义的张潇赟
      * @param id
      * @param name
      * @return
