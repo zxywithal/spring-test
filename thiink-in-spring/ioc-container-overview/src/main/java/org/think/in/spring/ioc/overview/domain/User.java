@@ -25,6 +25,16 @@ public class User implements BeanNameAware {
      */
     private transient String beanName;
 
+    private Company company;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     public Long getId() {
         return id;
     }
@@ -82,6 +92,7 @@ public class User implements BeanNameAware {
                 .add("configFileLocation=" + configFileLocation)
                 .add("workCities=" + Arrays.toString(workCities))
                 .add("lifeCities=" + lifeCities)
+                .add("company=" + company)
                 .toString();
     }
 
