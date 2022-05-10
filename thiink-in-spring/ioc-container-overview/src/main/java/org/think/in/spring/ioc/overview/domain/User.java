@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 import java.util.StringJoiner;
 
 public class User implements BeanNameAware {
@@ -26,6 +27,20 @@ public class User implements BeanNameAware {
     private transient String beanName;
 
     private Company company;
+
+    private Properties context;
+
+    public String getBeanName() {
+        return beanName;
+    }
+
+    public Properties getContext() {
+        return context;
+    }
+
+    public void setContext(Properties context) {
+        this.context = context;
+    }
 
     public Company getCompany() {
         return company;
@@ -93,6 +108,7 @@ public class User implements BeanNameAware {
                 .add("workCities=" + Arrays.toString(workCities))
                 .add("lifeCities=" + lifeCities)
                 .add("company=" + company)
+                .add("context=" + context)
                 .toString();
     }
 
