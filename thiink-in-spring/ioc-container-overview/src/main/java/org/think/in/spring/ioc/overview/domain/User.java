@@ -30,6 +30,16 @@ public class User implements BeanNameAware {
 
     private Properties context;
 
+    private String contextAsText;
+
+    public String getContextAsText() {
+        return contextAsText;
+    }
+
+    public void setContextAsText(String contextAsText) {
+        this.contextAsText = contextAsText;
+    }
+
     public String getBeanName() {
         return beanName;
     }
@@ -109,6 +119,7 @@ public class User implements BeanNameAware {
                 .add("lifeCities=" + lifeCities)
                 .add("company=" + company)
                 .add("context=" + context)
+                .add("contextAsText=" + contextAsText)
                 .toString();
     }
 

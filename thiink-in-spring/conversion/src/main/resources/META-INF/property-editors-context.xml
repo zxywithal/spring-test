@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       https://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!--    <context:component-scan base-package="org.scm"/>-->
-    <!--    <context:annotation-config/>-->
-    <!--Root Bedefinition 不需要合并，不存在parent-->
-    <!-- 普通BeanDefinition GenericBeanDefinition -->
+       https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       https://www.springframework.org/schema/util/spring-util.xsd
+">
+    <!-- 初始化自定义的PropertyEditor 注册 -->
     <bean class="org.think.in.spring.conversion.CustomizedPropertyEditorRegistrar"/>
 
+    <!--声明 ConversionServiceFactoryBean 将PropertiesToStringConverter 注册到spring容器中，并且id必须为conversionService-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <!--文本类型转class 类型，spring已经内建了相应的转换-->
+        <property name="converters">
+            <bean class="org.think.in.spring.conversion.PropertiesToStringConverter"/>
+        </property>
+    </bean>
+    <!--定义java.util.properties-->
+    <util:properties id="context">
+        <prop key="id">1</prop>
+        <prop key="name">zxyWithal</prop>
+    </util:properties>
     <bean id="user" class="org.think.in.spring.ioc.overview.domain.User">
         <property name="id" value="1"/>
         <property name="name" value="zxy"/>
@@ -19,6 +32,8 @@
                 name = 张潇赟
             </value>
         </property>
+        <!--定义Properties 类型转String-->
+        <property name="contextAsText" ref="context"/>
     </bean>
 
 </beans>
