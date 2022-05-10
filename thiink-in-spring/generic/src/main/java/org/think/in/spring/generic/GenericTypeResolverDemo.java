@@ -5,7 +5,6 @@ import org.springframework.core.GenericTypeResolver;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -52,8 +51,4 @@ public class GenericTypeResolverDemo {
 
     }
 
-    //泛型参数具体化,在字节码中有记录
-    static class StringList extends ArrayList<String> {
-
-    }
 }
