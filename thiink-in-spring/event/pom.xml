@@ -9,8 +9,12 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>event</artifactId>
+    <description>事件模型示例</description>
 
-    <artifactId>generic</artifactId>
-    <description>泛型解析示例</description>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
 </project>
