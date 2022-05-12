@@ -60,7 +60,7 @@ public class AsyncEventHandlerDemo {
                 }
             });
             simpleApplicationEventMulticaster.setErrorHandler(t -> {
-                System.out.println("spring 事件异常，原因"+t.getMessage());
+                System.err.println("spring 事件异常，原因"+t.getMessage());
                 t.printStackTrace();
             });
 
