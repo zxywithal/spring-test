@@ -15,6 +15,7 @@ import java.util.concurrent.Executors;
 /**
  * 异步事件处理示例
  * 通过接口设置 异步处理线程池
+ * simpleApplicationEventMulticaster 在上下文中唯一，如果设置为异步则整个上下文的事件处理都是异步模式
  * @see ApplicationEventMulticaster
  * @see SimpleApplicationEventMulticaster
  * @see ExecutorService
@@ -51,6 +52,16 @@ public class AsyncEventHandlerDemo {
                         executorService.shutdown();
                     }
                 }
+            });
+            simpleApplicationEventMulticaster.addApplicationListener(new ApplicationListener<MySpringEvent>() {
+                @Override
+                public void onApplicationEvent(MySpringEvent event) {
+                    throw new RuntimeException("演示异常处理");
+                }
+            });
+            simpleApplicationEventMulticaster.setErrorHandler(t -> {
+                System.out.println("spring 事件异常，原因"+t.getMessage());
+                t.printStackTrace();
             });
 
         }
