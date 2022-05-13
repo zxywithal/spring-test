@@ -1,7 +1,6 @@
 package org.think.in.spring.annotation;
 
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
 import org.springframework.core.annotation.AliasFor;
 
 import java.lang.annotation.*;
@@ -13,17 +12,27 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
-@ComponentScan
-public @interface MyComponentScan {
+@MyComponentScan
+public @interface MyComponentScan2 {
 
     //隐形别名，通过集成关系表达隐射关系
     //相当于子类里面的scanBasePackages 属性和 ComponentScan 中的basePackages 等价
     //如果不这么做，语法层面就会要求 两个属性都需要赋值
     //类似多态，子注解提供了新的属性方法引用"父"注解中的属性方法
-//    "#" 本身没用意义，只是想用说明调用的地方上传上来属性覆盖了父类的字段，效果相等
-    @AliasFor(annotation = ComponentScan.class, attribute = "basePackages")
-    String[] scanBasePackages() default {"#"};
+    @AliasFor(annotation = MyComponentScan.class, attribute = "scanBasePackages")
+    String[] basePackages() default {};
     //scanBasePackages ->
     //          @AliasFor @ComponentScan.basePackages ->
     //                  @AliasFor @ComponentScan.value
+
+    /**
+     * MyComponentScan同名属性
+     * @return
+     *
+     */
+    String[] scanBasePackages() default {};
+
+    //packages 覆盖了当前注解 和元（父）注解的scanBasePackages字段
+    @AliasFor("scanBasePackages")
+    String[] packages() default {};
 }
