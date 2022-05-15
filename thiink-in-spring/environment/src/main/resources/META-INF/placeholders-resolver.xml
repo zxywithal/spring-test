@@ -8,7 +8,7 @@
     <!--Root Bedefinition 不需要合并，不存在parent-->
     <!-- 普通BeanDefinition GenericBeanDefinition -->
 
-    <!--PropertyPlaceholderConfigurer 不会考虑系统资源属性 比如user.name 获取的值和properties文件中相同-->
+    <!--PropertyPlaceholderConfigurer 只有单一配置源，不会考虑系统资源属性 比如user.name 获取的值和properties文件中相同-->
 <!--    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
 <!--        <property name="location" value="classpath:META-INF/default.properties"/>-->
 <!--        <property name="fileEncoding" value="UTF-8"/>-->
