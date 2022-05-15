@@ -1,10 +1,7 @@
 package org.think.in.spring.annotation.profile;
 
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
 
@@ -41,7 +38,9 @@ public class ProfileDemo {
     }
 
     @Bean(name = "number")
-    @Profile("even") //偶数
+//    @Profile("even") //偶数
+    //用Conditional 代替profile
+    @Conditional(EvenProfileCondition.class)
     public Integer even(){
         return 2;
     }
