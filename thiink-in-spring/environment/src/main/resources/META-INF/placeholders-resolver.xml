@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--    <context:component-scan base-package="org.scm"/>-->
+    <!--    <context:annotation-config/>-->
+    <!--Root Bedefinition 不需要合并，不存在parent-->
+    <!-- 普通BeanDefinition GenericBeanDefinition -->
+
+    <!--PropertyPlaceholderConfigurer 不会考虑系统资源属性 比如user.name 获取的值和properties文件中相同-->
+<!--    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+<!--        <property name="location" value="classpath:META-INF/default.properties"/>-->
+<!--        <property name="fileEncoding" value="UTF-8"/>-->
+<!--    </bean>-->
+
+    <!--用PropertySourcesPlaceholderConfigurer 代替PropertyPlaceholderConfigurer -->
+    <!--PropertySourcesPlaceholderConfigurer 会考虑系统资源属性 比如user.name 获取的值和系统属性相同-->
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="location" value="classpath:META-INF/default.properties"/>
+        <property name="fileEncoding" value="UTF-8"/>
+    </bean>
+    <bean id="user" class="org.think.in.spring.ioc.overview.domain.User">
+        <property name="id" value="${user.id}"/>
+        <property name="name" value="${user.name}"/>
+        <property name="city" value="${user.city}"/>
+    </bean>
+
+</beans>

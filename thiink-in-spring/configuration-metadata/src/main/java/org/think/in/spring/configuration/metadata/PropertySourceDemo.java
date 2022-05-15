@@ -38,6 +38,7 @@ public class PropertySourceDemo {
         Map<String, Object> mySource = new HashMap<>();
         mySource.put("user.name", "红红火火恍恍惚惚");
         MapPropertySource mapPropertySource = new MapPropertySource("first-property-source",mySource);
+        //在系统属性之前加入自定义资源配置，
         context.getEnvironment().getPropertySources().addFirst(mapPropertySource);
 
         context.register(PropertySourceDemo.class);
@@ -51,8 +52,9 @@ public class PropertySourceDemo {
         MutablePropertySources propertySources = context.getEnvironment().getPropertySources();
         System.out.println(propertySources);
         for (org.springframework.core.env.PropertySource<?> propertySource : propertySources) {
-            Collections source = (Collections)propertySource.getSource();
+            Object source = propertySource.getSource();
             System.out.println(source);
+            System.out.println("===========");
         }
         //关闭spring应用上下文
         context.close();

@@ -17,8 +17,11 @@ public class ProfileDemo {
         ConfigurableEnvironment environment = ctx.getEnvironment();
         //设置默认的profile 为odd，被激活的profile为even
         //被激活优先级大于默认，
+        //spring boot 中通过配置spring.profiles.active = even 来激活even
+        //spring 中通过-D参数激活-Dspring.profiles.active=even
         environment.setDefaultProfiles("odd");
-        environment.setActiveProfiles("even");
+        //已通过-D参数配置，则下面的代码可以注释
+//        environment.setActiveProfiles("even");
         ctx.refresh();
         Integer number = ctx.getBean("number", Integer.class);
         System.out.println(number);
