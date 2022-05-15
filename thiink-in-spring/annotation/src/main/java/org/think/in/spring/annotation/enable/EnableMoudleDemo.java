@@ -1,6 +1,7 @@
-package org.think.in.spring.annotation;
+package org.think.in.spring.annotation.enable;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.think.in.spring.annotation.AttributeOverridesDemo;
 
 @EnableHelloWorld
 public class EnableMoudleDemo {

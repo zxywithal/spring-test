@@ -1,4 +1,4 @@
-package org.think.in.spring.annotation;
+package org.think.in.spring.annotation.enable;
 
 import org.springframework.context.annotation.Import;
 
