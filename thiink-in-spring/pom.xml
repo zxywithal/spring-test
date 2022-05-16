@@ -27,6 +27,7 @@
         <module>event</module>
         <module>annotation</module>
         <module>environment</module>
+        <module>application-lifecycle</module>
     </modules>
 
     <properties>
